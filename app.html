@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>JS Coding Practice</title>
+    <title>FizzBuzz</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,76 +16,132 @@
 
 <body class="d-flex flex-column h-100">
 
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">JS Project</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="app.html">The App</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="code.html">The Code</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<main class="flex-shrink-0">
-    <div class="container">
-        <div class="row row-cols-1 row-cols-lg-2">
-            <div class="col">
-                <h1 class="display-5 fw-bold lh-1 mb-3 pt-4">
-                    NAME
-                </h1>
-                <h4 class="lead">
-                    Description
-                </h4>
-            </div>
-            <div class="col">
-                <h4 class="border-1 border-bottom border-dark pt-4">
-                    Whats it do
-                </h4>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">FizzBuzz</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="app.html">The App</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="code.html">The Code</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
- </main>
+    </nav>
 
- <footer class="footer mt-auto py-3">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col text-light d-flex align-items-center justify-content-start">
-                <div>
-                    <span class="text-muted">&copy;2024 CJ Bowman | CJBowman@live.com</span>
+    <main class="flex-shrink-0">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-lg-2">
+                <div class="col">
+                    <h1 class="display-5 fw-bold lh-1 mb-3 pt-4 underline">
+                        FizzBuzz
+                    </h1>
+                    <h4 class="lead">
+                        Printing a range of numbers that you select. You can select which number will change to <strong>Fizz</strong> and which number will change to <strong>Buzz</strong>. A number divisible by both, will print <strong>FizzBuzz</strong>
+                    </h4>
+                </div>
+                <div class="col">
+                    <!--Range Nums-->
+                    <div class="row">
+                        <h4 class="underline pt-4">
+                            Enter Range:
+                        </h4>
+                        <form class="row gy-2 gx-2">
+                            <div class="col">
+                                <input id="startValue" type="number" class="form-control" placeholder="Starting value" value="1" aria-label="Start value">
+                            </div>
+                            <div class="col">
+                                <input id="endValue" type="number" class="form-control" placeholder="Ending value" value="100" aria-label="Ending value">
+                            </div>
+                        </form>
+                    </div>
+                    <!--FizzBuzz Nums-->
+                    <div class="row">
+                        <!--Fizz-->
+                        <div class="col">
+                            <h4 class="underline pt-4">
+                                Fizz Number:
+                            </h4>
+                            <form class="row gy-2 gx-2">
+                                <div class="col">
+                                    <input id="fizzValue" type="number" class="form-control" placeholder="Fizz value" value="3" aria-label="Start value">
+                                </div>
+                            </form>
+                        </div>
+                        <!--Buzz-->
+                        <div class="col">
+                            <h4 class="underline pt-4">
+                                Buzz Number:
+                            </h4>
+                            <form class="row gy-2 gx-2">
+                                <div class="col">
+                                    <input id="buzzValue" type="number" class="form-control" placeholder="Buzz value" value="5" aria-label="Start value">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-12 d-flex justify-content-end mt-2">
+                            <button id="btnSubmit" class="btn btn-outline-dark" type="button">Buzzit Fizzit</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-sm">
+                                <tbody id="results">
+                                    <!--JS Results here-->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col d-flex align-items-center justify-content-center">
-                <img src="css/images/Sessions logo.PNG" alt="filler logo" height="24">
-            </div>
-            <div class="col d-flex align-items-center justify-content-end">
-                <div class="row">
-                    <div class="col">
-                        <a href="https://www.linkedin.com/in/cj-bowman-1bbb1890/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-3">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col text-light d-flex align-items-center justify-content-start">
+                    <div>
+                        <span class="text-muted">&copy;2024 CJ Bowman | CJBowman@live.com</span>
                     </div>
-                    <div class="col">
-                        <a href="https://github.com/ceejster" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+                </div>
+                <div class="col d-flex align-items-center justify-content-center">
+                    <img src="css/images/Sessions logo.PNG" alt="filler logo" height="24">
+                </div>
+                <div class="col d-flex align-items-center justify-content-end">
+                    <div class="row">
+                        <div class="col">
+                            <a href="https://www.linkedin.com/in/cj-bowman-1bbb1890/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                        </div>
+                        <div class="col">
+                            <a href="https://github.com/ceejster" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
+
+    <template id="fbTable">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </template>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
@@ -94,7 +150,7 @@
     <script src="js/script.js"></script>
     <script>
         //change to relevant names
-        document.getElementById("reverseSubmit").addEventListener("click", getValue);
+        document.getElementById("btnSubmit").addEventListener("click", getValues);
     </script>
 </body>
 
