@@ -45,19 +45,231 @@
 
 <main class="flex-shrink-0">
     <div class="container py-5 px-5">
-        <h2 class="border-1 border-bottom border-dark pt-5">
-            The Code for NAME
-        </h2>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2">
+        <div class="row">
+            <h2 class="border-1 border-bottom border-dark pt-5">
+                The Code for: FizzBuzz
+            </h2>  
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-outline-dark" type="button" id="generalSubmit">General Code</button>
+                <button class="btn btn-outline-dark" type="button" id="ifElseSubmit">If/Else</button>
+                <button class="btn btn-outline-dark" type="button" id="switchSubmit">Switch</button>
+                <button class="btn btn-outline-dark" type="button" id="ternarySubmit">Ternary</button>
+            </div>
+        </div>
+        <!--General code-->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2" id="general">
             <div class="col-lg-8">
-                <pre class="line-numbers"><code class="language-javascript">function HelloWorld() {
-    alert("Hello World");
+                <pre class="line-numbers"><code class="language-javascript">//get values from the page
+//start or controller function
+function getValues() {
+    //range values
+    let startValue = document.getElementById("startValue").value;
+    let endValue = document.getElementById("endValue").value;
+
+
+    let numbers = generateNums(startValue, endValue);
+    //call fizzbuzz
+    let fbArray = fizzbuzzC(numbers);
+    
+    displayData(fbArray);
+}
+
+//generate the numbers form start to end value
+//logic
+function generateNums(startVal, endVal) {
+    let numbers = [];
+
+    for (let i = startVal; i <= endVal; i++) {
+        numbers.push(i);
+    }
+
+    return numbers;
+}
+
+//display nums and print even bold
+//view function
+function displayData(fbArray) {
+    let tableBody = document.getElementById("results");
+    let tableTemplate = document.getElementById("fbTable");
+
+    //clear table
+    tableBody.innerHTML = "";
+
+    for (let i = 0; i < fbArray.length; i += 5) {
+        let tableRow = document.importNode(tableTemplate.content, true);
+
+        //grab td to put into array
+        let rowCols = tableRow.querySelectorAll("td");
+
+        rowCols[0].classList.add(fbArray[i]);
+        rowCols[0].textContent = fbArray[i];
+
+        rowCols[1].classList.add(fbArray[i + 1]);
+        rowCols[1].textContent = fbArray[i + 1];
+
+        rowCols[2].classList.add(fbArray[i + 2]);
+        rowCols[2].textContent = fbArray[i + 2];
+
+        rowCols[3].classList.add(fbArray[i + 3]);
+        rowCols[3].textContent = fbArray[i + 3];
+
+        rowCols[4].classList.add(fbArray[i + 4]);
+        rowCols[4].textContent = fbArray[i + 4];
+
+        tableBody.appendChild(tableRow);
+    }
 }                
 </code>
                 </pre>
             </div>
             <div class="col-lg-4">
-                <h4>NAME</h4>
+                <h4>FizzBuzz: General</h4>
+                <br>
+                <h5>function() {</h5>
+                    <p>
+                        write up
+                    </p>
+                <h5>}</h5>
+                <br>
+                <h5>function() {</h5>
+                    <p>
+                        write up
+                    </p>
+                <h5>}</h5>
+            </div>
+        </div>
+        <!--if/else code-->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2" id="ifElse">
+            <div class="col-lg-8">
+                <pre class="line-numbers"><code class="language-javascript">//if/else statements
+function fizzbuzzA(nums) {
+    let fbArray = [];
+
+    //fizzbuzz values
+    let fizzNum = document.getElementById("fizzValue").value;
+    let buzzNum = document.getElementById("buzzValue").value;
+
+    for (let i = nums[0]; i <= nums.length; i++) {
+        if (i % fizzNum == 0 && i % buzzNum == 0) {
+            fbArray.push("FizzBuzz");
+        }
+        else if (i % fizzNum == 0) {
+            fbArray.push("Fizz");
+        }
+        else if (i % buzzNum == 0) {
+            fbArray.push("Buzz");
+        } 
+        else {
+            fbArray.push(i);
+        }
+    }
+    return fbArray;
+}               
+</code>
+                </pre>
+            </div>
+            <div class="col-lg-4">
+                <h4>FizzBuzz: If/Else</h4>
+                <br>
+                <h5>function() {</h5>
+                    <p>
+                        write up
+                    </p>
+                <h5>}</h5>
+                <br>
+                <h5>function() {</h5>
+                    <p>
+                        write up
+                    </p>
+                <h5>}</h5>
+            </div>
+        </div>
+        <!--switch statement code-->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2" id="switch">
+            <div class="col-lg-8">
+                <pre class="line-numbers"><code class="language-javascript">//switch statement
+function fizzbuzzB(nums) {
+    let returnArray = [];
+
+    //fizzbuzz values
+    let fizzNum = document.getElementById("fizzValue").value;
+    let buzzNum = document.getElementById("buzzValue").value;
+
+    let Fizz = false;
+    let Buzz = false;
+
+    for (let i = nums[0]; i <= nums.length; i++) {
+        Fizz = i % fizzNum == 0;
+        Buzz = i % buzzNum == 0;
+
+        switch(true) {
+            case Fizz && Buzz: 
+            {
+                returnArray.push("FizzBuzz");
+                break;
+            }
+            case Fizz:
+            {    
+                returnArray.push("Fizz");
+                break;
+            }
+            case Buzz:
+            {
+                returnArray.push("Buzz");
+                break;
+            }
+            default:
+            {
+                returnArray.push(i);
+                break;
+            }
+        }
+    }
+    return returnArray;
+}                
+    </code>
+                </pre>
+            </div>
+            <div class="col-lg-4">
+                <h4>FizzBuzz: Switch</h4>
+                <br>
+                <h5>function() {</h5>
+                    <p>
+                        write up
+                    </p>
+                <h5>}</h5>
+                <br>
+                <h5>function() {</h5>
+                    <p>
+                        write up
+                    </p>
+                <h5>}</h5>
+            </div>
+        </div>
+        <!--ternary code-->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2" id="ternary">
+            <div class="col-lg-8">
+                <pre class="line-numbers"><code class="language-javascript">//terenary operator
+function fizzbuzzC(nums) {
+    let returnArray = [];
+
+    //fizzbuzz values
+    let fizzNum = document.getElementById("fizzValue").value;
+    let buzzNum = document.getElementById("buzzValue").value;
+
+    for (let i = nums[0]; i <= nums.length; i++) {
+        let value = ((i % fizzNum == 0 ? "Fizz" : "") + (i % buzzNum == 0 ? "Buzz" : "") || i);
+        returnArray.push(value);
+    }
+    return returnArray;
+}                
+    </code>
+                </pre>
+            </div>
+            <div class="col-lg-4">
+                <h4>FizzBuzz: Ternary</h4>
                 <br>
                 <h5>function() {</h5>
                     <p>
@@ -75,23 +287,26 @@
     </div>
 </main>
 
- <footer class="footer mt-auto py-3">
+<footer class="footer mt-auto py-3">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col text-light d-flex align-items-center justify-content-start">
+        <div class="row row-cols-1 row-cols-md-3 gy-2">
+            <!--TM-->
+            <div class="col order-last order-md-first text-light d-flex align-items-center justify-content-start">
                 <div>
                     <span class="text-muted">&copy;2024 CJ Bowman | CJBowman@live.com</span>
                 </div>
             </div>
-            <div class="col d-flex align-items-center justify-content-center">
+            <!--Logo-->
+            <div class="col d-flex align-items-center justify-content-start justify-content-md-center text-light">
                 <img src="css/images/Sessions logo.PNG" alt="filler logo" height="24">
             </div>
-            <div class="col d-flex align-items-center justify-content-end">
+            <!--Icons-->
+            <div class="col d-flex align-items-center justify-content-start justify-content-md-end">
                 <div class="row">
-                    <div class="col">
+                    <div class="social col">
                         <a href="https://www.linkedin.com/in/cj-bowman-1bbb1890/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
                     </div>
-                    <div class="col">
+                    <div class="social col">
                         <a href="https://github.com/ceejster" target="_blank"><i class="fab fa-github fa-2x"></i></a>
                     </div>
                 </div>
@@ -112,6 +327,13 @@
             'left-trim': true,
             'right-trim': true
             })
+    </script>
+    <script src="js/invis.js"></script>
+    <script>
+        document.getElementById("generalSubmit").addEventListener("click", generalShow);
+        document.getElementById("ifElseSubmit").addEventListener("click", getIfElse);
+        document.getElementById("switchSubmit").addEventListener("click", getSwitch);
+        document.getElementById("ternarySubmit").addEventListener("click", getTernary);
     </script>
 </body>
 

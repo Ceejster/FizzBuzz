@@ -31,6 +31,31 @@ main>.container {
     margin-bottom: 5rem;
 }
 
+.Fizz {
+    color: var(--secondary);
+}
+
+.Buzz {
+    color: #264de4;
+}
+
+.FizzBuzz {
+    background: linear-gradient(rgb(19, 16, 205), rgb(212, 4, 4));
+    color: #e7e7e7;
+}
+
+#ifElse {
+    display: none;
+}
+
+#switch {
+    display: none;
+}
+
+#ternary {
+    display: none;
+}
+
 .checklist > li i {
     color: var(--secondary);
 }

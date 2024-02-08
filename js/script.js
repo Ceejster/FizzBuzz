@@ -8,7 +8,7 @@ function getValues() {
 
     let numbers = generateNums(startValue, endValue);
     //call fizzbuzz
-    let fbArray = fizzbuzz(numbers);
+    let fbArray = fizzbuzzA(numbers);
     
     displayData(fbArray);
 }
@@ -25,32 +25,6 @@ function generateNums(startVal, endVal) {
     return numbers;
 }
 
-//changing nums to fiiz/buzz/fizzbuzz
-function fizzbuzz(nums) {
-    let fbArray = [];
-
-    //fizzbuzz values
-    let fizzNum = document.getElementById("fizzValue").value;
-    let buzzNum = document.getElementById("buzzValue").value;
-
-    for (let i = nums[0]; i < nums.length; i++) {
-        if (i % fizzNum == 0 && i % buzzNum == 0) {
-            fbArray.push("FizzBuzz");
-        }
-        else if (i % buzzNum == 0) {
-            fbArray.push("Buzz");
-        } 
-        else if (i % fizzNum == 0) {
-            fbArray.push("Fizz");
-        }
-        else {
-            fbArray.push(i);
-        }
-    }
-    return fbArray;
-}
-
-
 //display nums and print even bold
 //view function
 function displayData(fbArray) {
@@ -65,12 +39,105 @@ function displayData(fbArray) {
 
         //grab td to put into array
         let rowCols = tableRow.querySelectorAll("td");
+
+        rowCols[0].classList.add(fbArray[i]);
         rowCols[0].textContent = fbArray[i];
+
+        rowCols[1].classList.add(fbArray[i + 1]);
         rowCols[1].textContent = fbArray[i + 1];
+
+        rowCols[2].classList.add(fbArray[i + 2]);
         rowCols[2].textContent = fbArray[i + 2];
+
+        rowCols[3].classList.add(fbArray[i + 3]);
         rowCols[3].textContent = fbArray[i + 3];
+
+        rowCols[4].classList.add(fbArray[i + 4]);
         rowCols[4].textContent = fbArray[i + 4];
-        
+
         tableBody.appendChild(tableRow);
     }
+}
+
+
+//statments
+//if/else statements
+function fizzbuzzA(nums) {
+    let fbArray = [];
+
+    //fizzbuzz values
+    let fizzNum = document.getElementById("fizzValue").value;
+    let buzzNum = document.getElementById("buzzValue").value;
+
+    for (let i = nums[0]; i <= nums.length; i++) {
+        if (i % fizzNum == 0 && i % buzzNum == 0) {
+            fbArray.push("FizzBuzz");
+        }
+        else if (i % fizzNum == 0) {
+            fbArray.push("Fizz");
+        }
+        else if (i % buzzNum == 0) {
+            fbArray.push("Buzz");
+        } 
+        else {
+            fbArray.push(i);
+        }
+    }
+    return fbArray;
+}
+
+//switch statement
+function fizzbuzzB(nums) {
+    let returnArray = [];
+
+    //fizzbuzz values
+    let fizzNum = document.getElementById("fizzValue").value;
+    let buzzNum = document.getElementById("buzzValue").value;
+
+    let Fizz = false;
+    let Buzz = false;
+
+    for (let i = nums[0]; i <= nums.length; i++) {
+        Fizz = i % fizzNum == 0;
+        Buzz = i % buzzNum == 0;
+
+        switch(true) {
+            case Fizz && Buzz: 
+            {
+                returnArray.push("FizzBuzz");
+                break;
+            }
+            case Fizz:
+            {    
+                returnArray.push("Fizz");
+                break;
+            }
+            case Buzz:
+            {
+                returnArray.push("Buzz");
+                break;
+            }
+            default:
+            {
+                returnArray.push(i);
+                break;
+            }
+        }
+    }
+    return returnArray;
+}
+
+//terenary operator
+function fizzbuzzC(nums) {
+    let returnArray = [];
+
+    //fizzbuzz values
+    let fizzNum = document.getElementById("fizzValue").value;
+    let buzzNum = document.getElementById("buzzValue").value;
+
+    for (let i = nums[0]; i <= nums.length; i++) {
+        let value = ((i % fizzNum == 0 ? "Fizz" : "") + (i % buzzNum == 0 ? "Buzz" : "") || i);
+        returnArray.push(value);
+    }
+    return returnArray;
 }
